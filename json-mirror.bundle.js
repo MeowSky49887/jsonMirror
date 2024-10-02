@@ -1062,6 +1062,7 @@ var jsonMirrorElement = /*#__PURE__*/function (_HTMLElement) {
     key: "setContent",
     value: function setContent(content) {
       this.innerHTML = content;
+      this.content = content;
       this.render();
     }
 
