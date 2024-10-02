@@ -981,6 +981,7 @@ var jsonMirrorElement = /*#__PURE__*/function (_HTMLElement) {
     _classCallCheck(this, jsonMirrorElement);
     _this = _callSuper(this, jsonMirrorElement);
     _defineProperty(_this, "handleChange", function (value) {
+      _this.content = value; // Update the local content state
       var event = new CustomEvent('change', {
         detail: {
           value: value
@@ -988,6 +989,7 @@ var jsonMirrorElement = /*#__PURE__*/function (_HTMLElement) {
       });
       _this.dispatchEvent(event);
     });
+    _this.content = ''; // Initialize content
     var shadow = _this.attachShadow({
       mode: 'closed'
     });
@@ -1062,11 +1064,6 @@ var jsonMirrorElement = /*#__PURE__*/function (_HTMLElement) {
       this.innerHTML = content;
       this.render();
     }
-  }, {
-    key: "getContent",
-    value: function getContent() {
-      return this.innerHTML.trim();
-    }
 
     // Method to get the current height of the editor
   }, {
@@ -1080,6 +1077,11 @@ var jsonMirrorElement = /*#__PURE__*/function (_HTMLElement) {
     key: "getWidth",
     value: function getWidth() {
       return this.mountPoint.getBoundingClientRect().width;
+    }
+  }, {
+    key: "getContent",
+    value: function getContent() {
+      return this.content; // Return the updated content
     }
   }, {
     key: "render",
